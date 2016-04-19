@@ -1,0 +1,149 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: #1358b0;
+	color: #fff;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	line-height: 1.1;
+
+	font-family: Avenir Next, Avenir, -webkit-system, BlinkMacSystemFont, Helvetica, Roboto, Segoe UI, Arial, sans-serif;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+.disabled {
+	pointer-events: none;
+}
+
+#app-container {
+	max-width: 700px;
+	width: 100%;
+	padding: 1em .3em;
+	margin-top: 1em;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+#title {
+	font-size: 1.5em;
+	text-align: center;
+	margin-bottom: .5em;
+}
+
+.app-box {
+	padding: 1em .3em;
+	border-radius: 4px;
+	background: rgba(255, 255, 255, 0.1);
+}
+#input-box::before {
+	content: 'Enter Your Tweet';
+	text-align: center;
+	display: block;
+	width: 100%;
+	margin-bottom: .5em;
+}
+#input {
+	border: none;
+	background: rgba(255, 255, 255, 0.1);
+	width: 100%;
+	font: inherit;
+	color: inherit;
+	padding: 1em .5em;
+	box-sizing: border-box;
+	height: 100px;
+	border-radius: 4px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	user-select: text;
+}
+#input:focus {
+	outline: none;
+	background: #1358b0;
+}
+#input:empty::before {
+	content: 'Type a tweet';
+	opacity: .5;
+	transition: opacity .3s;
+}
+#input.frozen {
+	cursor: default;
+}
+#input.frozen::before {
+	opacity: 0;
+}
+.token.special {
+	color: #78b4f0;
+}
+.token.match {
+	font-weight: 500;
+	text-decoration: underline;
+}
+#input.frozen .token.match {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.align-right {
+	text-align: right;
+}
+button {
+	border: 1px solid transparent;
+	background: #0c3b75;
+	font: inherit;
+	color: inherit;
+	padding: .3em .8em;
+	border-radius: 4px;
+	margin-top: .5em;
+	margin-left: 1px;
+	margin-right: 1px;
+	text-align: center;
+}
+button:focus {
+	outline: none;
+	border-color: #fff;
+}
+button:active {
+	border-color: #0c3b75;
+	background: none;
+}
+#inst-btn {
+	float: left;
+	white-space: nowrap;
+}
+.substitution-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #0d4080;
+	border-radius: 4px;
+	padding: 0;
+	z-index: 10;
+}
+.substitution-menu .option {
+	padding: .3em .5em;
+	cursor: default;
+}
+.substitution-menu .option.selected {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+footer {
+	font-size: small;
+	text-align: center;
+	margin-top: .5em;
+}
+a {
+	color: inherit;
+}
