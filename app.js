@@ -10,6 +10,11 @@ let decodeEntities = function(s) {
 		return div.textContent;
 	});
 };
+let encodeEntities = function(s) {
+	let div = document.createElement('div');
+	div.textContent = s;
+	return div.innerHTML;
+};
 
 let parseHTML = function(content, newlines) {
 	content = content.replace(/<div ([\w\s=\-"']+)>/g, '\n').replace(/<\/div>/g, '')
@@ -49,7 +54,9 @@ let updateInput = function(e, convert) {
 	for (let token of tokens) {
 		let span = document.createElement('span');
 		span.classList.add('token');
-		span.textContent = token.content;
+		let lines = token.content.split('\n');
+		for (let i in lines) lines[i] = encodeEntities(lines[i]);
+		span.innerHTML = lines.join('<br>');
 		if (token.type == 'special') {
 			span.classList.add('special');
 		} else if (token.type == 'match') {
@@ -58,7 +65,9 @@ let updateInput = function(e, convert) {
 			span.setAttribute('selected', token.content);
 			span.setAttribute('substitutes', JSON.stringify(token.substitutes));
 			if (convert) {
-				span.textContent = token.substitutes[0];
+				let lines = token.substitutes[0].split('\n');
+				for (let i in lines) lines[i] = encodeEntities(lines[i]);
+				span.innerHTML = lines.join('<br>');
 				span.setAttribute('selected', token.substitutes[0]);
 			}
 		}
