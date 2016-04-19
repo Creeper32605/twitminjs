@@ -114,6 +114,14 @@ if (localStorage.twitminjs_mobilemode) {
 	doUpdate = false;
 }
 
+let updateCharDisplay = function() {
+	let iBox = document.querySelector('#input-box');
+	if (editing)
+		iBox.removeAttribute('bftext');
+	else
+		iBox.setAttribute('bftext', `${inputContent.length}/140`);
+};
+
 let tokenOnClick = function() {
 	if (editing) return;
 	let token = this;
@@ -165,6 +173,8 @@ let tokenOnClick = function() {
 					token.style.whiteSpace = '';
 				});
 			}
+			inputContent = ('innerText' in tinput) ? tinput.innerText : parseHTML(tinput.innerHTML);
+			updateCharDisplay();
 
 			// close menu
 			Velocity.hook(menu, 'transformOriginX', `${this.getAttribute('offsetX')}px`);
@@ -266,6 +276,8 @@ cbutton.addEventListener('click', function() {
 			scaleY: 1,
 			opacity: 1
 		}, 300, 'easeOutExpo');
+
+		updateCharDisplay();
 	} else {
 		editing = true;
 		input.classList.remove('frozen');
@@ -301,6 +313,8 @@ cbutton.addEventListener('click', function() {
 			scaleY: 0,
 			opacity: 0
 		}, 300, 'easeOutExpo');
+
+		updateCharDisplay();
 	}
 });
 
