@@ -1,5 +1,5 @@
 String.prototype.atIndex = function(i) {
-		return i < 0 ? '' : (i >= this.length ? '' : this[i]);
+	return i < 0 ? '' : (i >= this.length ? '' : this[i]);
 };
 
 // sort substitution data by size, so that larger ones are matched first
